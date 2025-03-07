@@ -5,7 +5,6 @@ import "./sign-in-form.styles.scss";
 
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.util.js";
 
@@ -36,8 +35,9 @@ const SignInForm = () => {
       );
       console.log(response);
       resetFormFields();
-    } catch (error) {
-      alert(error.message);
+    } 
+    catch (error) {
+      alert('Problem with email/password - invalid');
     }
   };
 
@@ -71,7 +71,7 @@ const SignInForm = () => {
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button buttonType="google" onClick={signInWithGoogle}>
+          <Button button='button' buttonType="google" onClick={signInWithGoogle}>
             Google sign in
           </Button>
         </div>
