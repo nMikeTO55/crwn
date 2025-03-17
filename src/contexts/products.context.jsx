@@ -1,6 +1,6 @@
 import {createContext, useState, useEffect } from 'react';
 
-import { addCollectionAndDocuments } from '../utils/firebase/firebase.util';
+import { getCollectionAndDocuments } from '../utils/firebase/firebase.util';
 
 import SHOP_DATA from '../shop-data.js';
 
@@ -11,6 +11,14 @@ export const ProductsContext = createContext({
 export const ProductsProvider = ({children}) =>{
 
   const [products, setProducts] = useState([]);
+
+  useEffect(()=>{
+    const getCategoriesMap = async ()=>{
+      const categoryMap = await getCollectionAndDocuments();
+      console.log(categoryMap)
+    }
+    getCategoriesMap();
+  },[])
 
   /* Only used to load firestore db one time.
   useEffect(()=>{
