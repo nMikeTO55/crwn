@@ -13,17 +13,10 @@ export const CategoriesProvider = ({children}) =>{
   useEffect(()=>{
     const getCategoriesMap = async ()=>{
       const categoryMap = await getCollectionAndDocuments();
-      console.log(categoryMap);
       setCategoriesMap(categoryMap);
     }
     getCategoriesMap();
   },[])
-
-  /* Only used to load firestore db one time.
-  useEffect(()=>{
-    addCollectionAndDocuments('categories', SHOP_DATA);
-  }, []);
-*/
 
   const value = {categoriesMap};
   return(
